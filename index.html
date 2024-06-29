@@ -4,20 +4,23 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="png" href="CrImages\key.png">
     <title>Secure Ink</title>
 </head>
 <body>
+   
     <div class="container">
         <label for="text">Enter text for encryption and decryption:</label>
         <textarea id="text" rows="4"></textarea>
 
         <label for="key">Enter secret key for encryption and decryption:</label>
         <input type="password" id="key" />
-
-        <button onclick="encrypt()">Encrypt</button>
-        <button onclick="decrypt()">Decrypt</button>
-        <button onclick="reset()">Reset</button>
-
+        <div class="btn">
+        <button id="encrypt" onclick="encrypt()">Encrypt</button>
+        <button id="decrypt" onclick="decrypt()">Decrypt</button>
+        <button id="reset" onclick="reset()">Reset</button>
+        <button id="copy" onclick="copyText()">Copy Text</button>
+        </div>
         <div id="result" class="result"></div>
     </div>
 
