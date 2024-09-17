@@ -7,15 +7,70 @@ body {
     height: 100vh;
     margin: 0;
 }
+/* Full-screen splash screen */
 
+#splash-screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: white; /* Change this to fit your branding */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000; /* Ensure it stays on top */
+    transition: opacity 0.5s ease; /* Smooth fade-out */
+}
 
+/* Hidden state for splash screen (once it fades out) */
+#splash-screen.hidden {
+    opacity: 0;
+    visibility: hidden;
+}
+
+/* Splash content (centered content inside the splash screen) */
+.splash-content {
+    text-align: center;
+    color: white;
+}
+
+.splash-logo {
+    width: 150px;
+    height: 150px;
+    margin-bottom: 20px;
+}
+
+.splash-content h1 {
+    font-size: 24px;
+    font-weight: bold;
+    color: blueviolet;
+}
+
+/* Main content styles */
+.main-content {
+    display: none; /* Hidden until splash screen disappears */
+    text-align: center;
+    padding: 50px;
+}
+
+/* Optional main content styling */
+.main-content h1 {
+    font-size: 36px;
+    color: #333;
+}
+
+.main-content p {
+    font-size: 18px;
+    color: #666;
+}
 
 .container {
     background-color: #ffffff;
     padding: 20px;
     border-radius: 10px;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
-    max-width: 90%; /* Adjust max-width as needed */
+    max-width: 90%;
     width: 100%;
     text-align: center;
 }
@@ -25,17 +80,47 @@ label {
     color: #2c3e50;
     display: block;
     margin-bottom: 8px;
-    text-align: left; /* Ensure labels are aligned left */
+    text-align: left;
+    
 }
 
 textarea, input {
-    width: calc(100% - 20px);
-    margin-bottom: 15px;
+    width: 100%; /* Adjusted width to accommodate the icon button */
+    margin-bottom: 30px;
     padding: 12px;
     font-size: 14px;
     border: 1px solid #ccc;
     border-radius: 4px;
     box-sizing: border-box;
+    display: flex;
+}
+
+.key-container {
+    display: flex;
+    align-items: center;
+    position: inherit;
+    width: auto;
+    margin-top: 20px;
+
+}
+
+#key {
+    flex: 1;
+}
+
+#toggle-key {
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    font-size: 20px;
+    padding: 0 10px;
+    color: #3498db;
+    margin-top: -25px;
+    justify-content: center;
+}
+
+#toggle-key:hover #eye-icon {
+    color: #131414;
 }
 
 button {
@@ -51,48 +136,26 @@ button {
 #encrypt {
     background-color: #2ecc71;
     color: #ffffff;
-    border: none;
-    padding: 12px 20px;
-    cursor: pointer;
-    margin-right: 10px;
-    font-size: 16px;
-    border-radius: 4px;
-    transition: background-color 0.3s ease;
 }
 
 #decrypt {
     background-color: red;
     color: #ffffff;
-    border: none;
-    padding: 12px 20px;
-    cursor: pointer;
-    margin-right: 10px;
-    font-size: 16px;
-    border-radius: 4px;
-    transition: background-color 0.3s ease;
 }
 
 #reset {
     background-color: skyblue;
     color: #ffffff;
-    border: none;
-    padding: 12px 20px;
-    cursor: pointer;
-    margin-right: 10px;
-    font-size: 16px;
-    border-radius: 4px;
-    transition: background-color 0.3s ease;
 }
+
 #copy {
     background-color: orange;
     color: #ffffff;
-    border: none;
-    padding: 12px 20px;
-    cursor: pointer;
-    margin-right: 10px;
-    font-size: 16px;
-    border-radius: 4px;
-    transition: background-color 0.3s ease;
+}
+
+#paste {
+    background-color: blueviolet;
+    color: #ffffff;
 }
 
 button:hover {
@@ -108,73 +171,30 @@ button:hover {
     font-size: 14px;
     color: #2c3e50;
     word-break: break-word;
-    text-align: left; /* Ensure result text is aligned left */
+    text-align: left;
 }
 
-/* Responsive media queries */
 @media (max-width: 768px) {
     .container {
         padding: 10px;
     }
 
+    textarea, input {
+        width: calc(100% - 50px); /* Adjusted width for smaller screens */
+    }
+
+    #toggle-key {
+        font-size: 18px;
+        padding: 0 8px;
+    }
+
     button {
         font-size: 14px;
-        gap: 20px;
-        display: flex;
-        
-
-
     }
 
-
-    #encrypt {
-        background-color: #2ecc71;
-        color: #ffffff;
-        border: none;
-        padding: 12px 20px;
-        cursor: pointer;
+    #encrypt, #decrypt, #reset, #copy ,#paste{
         margin: auto;
         margin-bottom: 10px;
-        font-size: 16px;
-        border-radius: 4px;
-        transition: background-color 0.3s ease;
-        
     }
-    
-    #decrypt {
-        background-color: red;
-        color: #ffffff;
-        border: none;
-        padding: 12px 20px;
-        cursor: pointer;
-        margin: auto;
-        margin-bottom: 10px;
-        font-size: 16px;
-        border-radius: 4px;
-        transition: background-color 0.3s ease;
-    }
-    
-    #reset {
-        background-color: skyblue;
-        color: #ffffff;
-        border: none;
-        padding: 12px 20px;
-        cursor: pointer;
-        margin: auto;
-        margin-bottom: 10px;
-        font-size: 16px;
-        border-radius: 4px;
-        transition: background-color 0.3s ease;
-    }
-    #copy {
-        background-color: orange;
-        color: #ffffff;
-        border: none;
-        padding: 12px 20px;
-        cursor: pointer;
-        margin: auto;
-        font-size: 16px;
-        border-radius: 4px;
-        transition: background-color 0.3s ease;
-    }
+ 
 }
